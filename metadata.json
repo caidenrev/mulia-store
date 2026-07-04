@@ -1,0 +1,6 @@
+{
+  "name": "MuliaStore",
+  "description": "Modern Indonesian E-Commerce Platform built with React, Tailwind CSS, and Firebase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
