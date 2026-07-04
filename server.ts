@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import { initializeApp, getApps } from "firebase-admin/app";
 import { getFirestore, FieldValue } from "firebase-admin/firestore";
-import { createServer as createViteServer } from "vite";
 import fs from "fs";
 
 // Load environment variables
@@ -351,7 +350,8 @@ app.post("/api/simulate-payment", async (req, res) => {
 // Vite Server Setup for Full-Stack Integration
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
+    const { createServer } = await import("vite");
+    const vite = await createServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
