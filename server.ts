@@ -42,7 +42,7 @@ if (!getApps().length) {
 }
 
 // Ensure we use the correct database ID if defined
-const db = firebaseConfig?.firestoreDatabaseId 
+const db = firebaseConfig?.firestoreDatabaseId
   ? getFirestore(adminApp, firebaseConfig.firestoreDatabaseId)
   : getFirestore(adminApp);
 
@@ -51,8 +51,8 @@ const memoryOrders = new Map<string, any>();
 
 // Helper to load Midtrans Keys
 function getMidtransKeys() {
-  const serverKey = process.env.MIDTRANS_SERVER_KEY || "YOUR_MIDTRANS_SERVER_KEY";
-  const clientKey = process.env.MIDTRANS_CLIENT_KEY || "Mid-client-Uhr4Zn8r_pWh8WSS";
+  const serverKey = process.env.MIDTRANS_SERVER_KEY;
+  const clientKey = process.env.MIDTRANS_CLIENT_KEY;
   return { serverKey, clientKey };
 }
 
@@ -369,4 +369,8 @@ async function startServer() {
   });
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
+
+export default app;
